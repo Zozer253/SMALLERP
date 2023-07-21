@@ -1,0 +1,56 @@
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/cotations
+
+###
+GET http://localhost:5000/cotation/3
+###
+
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+  "firstName" : "jean-pierre",
+  "lastName" : "lwanga",
+  "phone" : "+243829161746",
+  "email" : "jp@doprax.com",
+  "password": "hashedPassword"
+}
+
+###
+
+POST http://localhost:5000/miningsignup
+Content-Type: application/json
+
+{
+  "logo" : "https://i0.wp.com/www.blpcorporate.com/wp-content/uploads/2020/06/KCSA-logo-Video-production-Website.png",
+  "nom" : "SEG",
+  "description" : "Nous sommes une grande entreprise mière"
+}
+
+###
+
+POST http://localhost:5000/cotation
+Content-Type: application/json
+
+{
+  "date": "2023-06-28",
+  "description": "This an is the third quotation.",
+  "etat": "En cours",
+  "dureedevalidation": "10 jour",
+  "nom": "kamoa"
+}
+
+###
+
+POST http://localhost:5000/offer
+Content-Type: application/json
+
+{
+  "cotation_id": 1,
+  "description": "This is a test offer",
+  "prix": 1000
+}
+
+

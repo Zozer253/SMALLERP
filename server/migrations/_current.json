@@ -1,0 +1,729 @@
+{
+    "tables": {
+        "Adresses": {
+            "tableName": "Adresses",
+            "schema": {
+                "idAdress": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idAdress",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "province": {
+                    "field": "province",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "ville": {
+                    "field": "ville",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "street": {
+                    "field": "street",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "Entreprise_idEntreprise": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Entreprises",
+                        "key": "idEntreprise"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "Entreprise_idEntreprise",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Categories": {
+            "tableName": "Categories",
+            "schema": {
+                "Categories": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "Categories",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nom": {
+                    "field": "nom",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "illustration": {
+                    "field": "illustration",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "CommandeClients": {
+            "tableName": "CommandeClients",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "commandes_idcommandes": {
+                    "field": "commandes_idcommandes",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Commandes",
+                        "key": "idcommandes"
+                    },
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "quantity": {
+                    "field": "quantity",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "price": {
+                    "field": "price",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Commandes": {
+            "tableName": "Commandes",
+            "schema": {
+                "idcommandes": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idcommandes",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "date": {
+                    "field": "date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "status": {
+                    "field": "status",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "offres_idoffres": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Offres",
+                        "key": "idoffres"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "offres_idoffres",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "CotationProducts": {
+            "tableName": "CotationProducts",
+            "schema": {
+                "idtable1": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idtable1",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "quantité": {
+                    "field": "quantité",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "cotation_idcotation": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Cotations",
+                        "key": "idcotation"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "cotation_idcotation",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "produit_idproduit": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Products",
+                        "key": "idProduit"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "produit_idproduit",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Cotations": {
+            "tableName": "Cotations",
+            "schema": {
+                "idcotation": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idcotation",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "date": {
+                    "field": "date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "description": {
+                    "field": "description",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "etat": {
+                    "field": "etat",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "dureedevalidation": {
+                    "field": "dureedevalidation",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "user_idUser": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "idUser"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "user_idUser",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Customers": {
+            "tableName": "Customers",
+            "schema": {
+                "idCustomers": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idCustomers",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "phone": {
+                    "field": "phone",
+                    "seqType": "Sequelize.STRING(20)"
+                },
+                "name": {
+                    "field": "name",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "date": {
+                    "field": "date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "user_idUser": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "idUser"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "user_idUser",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Entreprises": {
+            "tableName": "Entreprises",
+            "schema": {
+                "idEntreprise": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idEntreprise",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "logo": {
+                    "field": "logo",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "nom": {
+                    "field": "nom",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "description": {
+                    "field": "description",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Entries": {
+            "tableName": "Entries",
+            "schema": {
+                "identries": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "identries",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Quantity": {
+                    "field": "Quantity",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "price": {
+                    "field": "price",
+                    "seqType": "Sequelize.FLOAT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "stock_idproduit_pulic": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Stocks",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "stock_idproduit_pulic",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Expenses": {
+            "tableName": "Expenses",
+            "schema": {
+                "idExpenses": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idExpenses",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "rising": {
+                    "field": "rising",
+                    "seqType": "Sequelize.FLOAT"
+                },
+                "date": {
+                    "field": "date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "description": {
+                    "field": "description",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "image": {
+                    "field": "image",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "users_idUser": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "idUser"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "users_idUser",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "OffreProduits": {
+            "tableName": "OffreProduits",
+            "schema": {
+                "idofproduit": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idofproduit",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "quantité": {
+                    "field": "quantité",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "prix_unitaire": {
+                    "field": "prix_unitaire",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "total": {
+                    "field": "total",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Offres": {
+            "tableName": "Offres",
+            "schema": {
+                "idoffres": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idoffres",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "total": {
+                    "field": "total",
+                    "seqType": "Sequelize.FLOAT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "offres_idoffres": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "OffreProduits",
+                        "key": "idofproduit"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "offres_idoffres",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_idUser": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "idUser"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "user_idUser",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "cotation_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Cotations",
+                        "key": "idcotation"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "cotation_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Products": {
+            "tableName": "Products",
+            "schema": {
+                "idProduit": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idProduit",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nom": {
+                    "field": "nom",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "statut": {
+                    "field": "statut",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "date": {
+                    "field": "date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "photo": {
+                    "field": "photo",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "validated": {
+                    "field": "validated",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
+                "visibility": {
+                    "field": "visibility",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "category_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Categories",
+                        "key": "Categories"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "category_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Sorties": {
+            "tableName": "Sorties",
+            "schema": {
+                "idsorties": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idsorties",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "qty": {
+                    "field": "qty",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "commandes_idcommandes": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Commandes",
+                        "key": "idcommandes"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "commandes_idcommandes",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "stock_idproduit_pulic": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Stocks",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "stock_idproduit_pulic",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Stocks": {
+            "tableName": "Stocks",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idproduit_pulic": {
+                    "field": "idproduit_pulic",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "stock": {
+                    "field": "stock",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "users_idUser": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "idUser"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "users_idUser",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Users": {
+            "tableName": "Users",
+            "schema": {
+                "idUser": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "idUser",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "firstName": {
+                    "field": "firstName",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "lastName": {
+                    "field": "lastName",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "role": {
+                    "field": "role",
+                    "seqType": "Sequelize.ENUM('ADMIN', 'VENDEUR_LOCAL', 'MINING')"
+                },
+                "email": {
+                    "field": "email",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "phone": {
+                    "field": "phone",
+                    "seqType": "Sequelize.STRING(20)"
+                },
+                "password": {
+                    "field": "password",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "Entreprise_idEntreprise": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Entreprises",
+                        "key": "idEntreprise"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "Entreprise_idEntreprise",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "path": "/home/zozer/Desktop/MININGERP/server/migrations/_current.json",
+    "backupPath": "/home/zozer/Desktop/MININGERP/server/migrations/_current_bak.json",
+    "exists": true,
+    "revision": 13
+}
